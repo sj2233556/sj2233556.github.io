@@ -2,24 +2,59 @@
 <html lang="ko">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Virtual Kaori</title>
-    <meta name="description" content="가상 미야조노 카오리">
-    <meta name="keywords" content="가상, 미야조노, 카오리">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Virtual Kaori</title>
+  <meta name="description" content="가상 미야조노 카오리">
+  <meta name="keywords" content="가상, 미야조노, 카오리">
 </head>
 
 <body>
-    <div class="chr">
-        <img src="./images/fullbody1.jpg" alt="카오리 전신" usemap="#image-map" width="420" height="672">
+  <div class="chr">
+    <audio id="chrRspVoice" data-vp="false">
+    </audio>
+    <img src="./images/fullbody1.jpg" alt="카오리 전신" usemap="#image-map" width="420" height="672">
+    <map name="image-map">
+      <area alt="이마" title="이마" href="" coords="145,14,231,63" shape="rect" onclick="chrRspT(this)">
+      <area alt="볼R" title="볼R" href="" coords="169,94,10" shape="circle" onclick="chrRspT(this)">
+      <area alt="볼L" title="볼L" href="" coords="212,93,11" shape="circle" onclick="chrRspT(this)">
+      <area alt="입" title="입" href="" coords="180,99,200,110" shape="rect" onclick="chrRspT(this)">
+    </map>
+    <script>
+      var vp = document.getElementById("chrRspVoice");
 
-        <map name="image-map">
-            <area alt="이마" title="이마" href="" coords="145,14,231,63" shape="rect" onclick="alert('쓰담쓰담!')">
-            <area alt="볼R" title="볼R" href="" coords="169,94,10" shape="circle" onclick="alert('볼에 뭐 묻었어?')">
-            <area alt="볼L" title="볼L" href="" coords="212,93,11" shape="circle" onclick="alert('볼에 뭐 묻었어?')">
-            <area alt="입" title="입" href="" coords="180,99,200,110" shape="rect" onclick="alert('유저의 손맛 기억해버릴거같아...')">
-        </map>
-    </div>
+      function say(name) {
+        vp.src = "./voices/" + name + ".mp3";
+        var vl = { "h2": { "st": 1.1, "et": 2.8 } }
+        let st = vl[name].st;
+        let et = vl[name].et;
+          vp.currentTime = (st || 0);
+          if (vl[name].et != undefined) {
+            vp.src +="#t=" + st + "," + et;
+          } else {
+            vp.src+="#t=" + st;
+          }
+          alert(vp.src)
+          vp.play();
+      }
+
+      function chrRspT(al) {
+        switch (al.title) {
+          case "이마":
+            alert("쓰다듬는거 좋아...♡");
+            say("h2");
+            break;
+          case "볼R":
+          case "볼L":
+            alert("볼에 뭐 묻었었어?");
+            break;
+          case "입":
+            alert("유저의 손맛 기억해버릴거 같아...");
+            break;
+        }
+      }
+    </script>
+  </div>
 </body>
 
 </html>
