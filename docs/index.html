@@ -5,55 +5,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project Virtual Kaori</title>
+  <meta name="koreanTitie" content="가상으로 만나는 미야조노 카오리">
   <meta name="description" content="가상 미야조노 카오리">
   <meta name="keywords" content="가상, 미야조노, 카오리">
+  <script src="./js/mein.js"></script>
 </head>
 
 <body>
   <div class="chr">
-    <audio id="chrRspVoice" data-vp="false">
-    </audio>
-    <img src="./images/fullbody1.jpg" alt="카오리 전신" usemap="#image-map" width="420" height="672">
+    <script src="./js/chr.js" type="text/javascript"></script>
+    <img src="./images/fullbody1.jpg" alt="카오리 전신" usemap="#image-map" width="420" height="672" onload="chrReady()">
     <map name="image-map">
-      <area alt="이마" title="이마" href="" coords="145,14,231,63" shape="rect" onclick="chrRspT(this)">
-      <area alt="볼R" title="볼R" href="" coords="169,94,10" shape="circle" onclick="chrRspT(this)">
-      <area alt="볼L" title="볼L" href="" coords="212,93,11" shape="circle" onclick="chrRspT(this)">
-      <area alt="입" title="입" href="" coords="180,99,200,110" shape="rect" onclick="chrRspT(this)">
+      <area alt="이마" title="이마" href="#" coords="145,14,231,63" shape="rect" onclick="chrRspT(this)">
+      <area alt="볼R" title="볼R" href="#" coords="169,94,10" shape="circle" onclick="chrRspT(this)">
+      <area alt="볼L" title="볼L" href="#" coords="212,93,11" shape="circle" onclick="chrRspT(this)">
+      <area alt="입" title="입" href="#" coords="180,99,200,110" shape="rect" onclick="chrRspT(this)">
+      <area alt="목" title="목" href="#" coords="194,122,12" shape="circle">
+      <area alt="머리카락" title="머리카락" href="#" coords="256,106,301,150" shape="rect">
+      <area alt="허벅지L" title="허벅지L" href="#" coords="158,361,179,419" shape="rect">
+      <area alt="허벅지R" title="허벅지R" href="#" coords="209,359,232,411" shape="rect">
+      <area alt="무릎L" title="무릎L" href="#" coords="169,446,12" shape="circle">
+      <area alt="무릎R" title="무릎R" href="#" coords="221,430,13" shape="circle">
+      <area alt="다리L" title="다리L" href="#" coords="179,551,155,469" shape="rect">
+      <area alt="다리R" title="다리R" href="#" coords="240,465,270,531" shape="rect">
+      <area alt="발R" title="발R" href="#" coords="244,546,272,591" shape="rect">
+      <area alt="발L" title="발L" href="#" coords="158,571,190,613" shape="rect">
+      <area alt="가랭이" title="가랭이" href="#" coords="154,295,237,341" shape="rect" onmouseover="alert('헤에!!! 그...그안은 변태...! 그치만 그쪽 만져줘도...조...좋아! ')" onclick="alert('하읏♡')">
+      <area alt="배" title="배" href="#" coords="153,262,231,281" shape="rect">
+      <area alt="흉부" title="흉부" href="#" coords="158,204,233,255" shape="rect">
+      <area alt="팔L" title="팔L" href="#" coords="133,159,152,248" shape="rect">
+      <area alt="팔R" title="팔R" href="#" coords="236,159,255,250" shape="rect">
+      <area alt="가슴L" title="가슴L" href="#" coords="173,170,19" shape="circle">
+      <area alt="가슴R" title="가슴R" href="#" coords="212,168,19" shape="circle">
+      <area alt="어깨L" title="어깨L" href="#" coords="146,138,15" shape="circle">
+      <area alt="어깨R" title="어깨R" href="#" coords="237,138,14" shape="circle">
     </map>
-    <script>
-      var vp = document.getElementById("chrRspVoice");
-
-      function say(name) {
-        vp.src = "./voices/" + name + ".mp3";
-        var vl = { "h2": { "st": 1.1, "et": 2.8 } }
-        let st = vl[name].st;
-        let et = vl[name].et;
-          vp.currentTime = (st || 0);
-          if (vl[name].et != undefined) {
-            vp.src +="#t=" + st + "," + et;
-          } else {
-            vp.src+="#t=" + st;
-          }
-          alert(vp.src)
-          vp.play();
-      }
-
-      function chrRspT(al) {
-        switch (al.title) {
-          case "이마":
-            alert("쓰다듬는거 좋아...♡");
-            say("h2");
-            break;
-          case "볼R":
-          case "볼L":
-            alert("볼에 뭐 묻었었어?");
-            break;
-          case "입":
-            alert("유저의 손맛 기억해버릴거 같아...");
-            break;
-        }
-      }
-    </script>
+    <audio autoplays controls hidden="" id="chrv"></audio>
   </div>
 </body>
 
